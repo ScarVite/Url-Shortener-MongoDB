@@ -1,13 +1,13 @@
 {
-  "name": "aniflix-nanoid-test",
+  "name": "url-shortener",
+  "author": "ScarVite#6606",
   "version": "1.0.0",
-  "description": "",
+  "description": "The backend of an URL Shortener",
   "main": "api.js",
   "scripts": {
     "start": "nodemon api.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.0",

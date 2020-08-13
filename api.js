@@ -13,7 +13,7 @@ const app = express();
 
 
 var listener = app.listen(180, function () {
-    console.log(`Enter The API listening on port ${listener.address().port}`)
+    console.log(`Url Shortener (as a Api) listening on port ${listener.address().port}`)
 });
 
 app.use(helmet())
