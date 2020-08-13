@@ -1,0 +1,37 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" \>
+    <meta title="Aniflix nanoId test" \>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script>
+        function send() {
+            var data = {
+                link: document.newNanoId.link.value,
+                creator: document.newNanoId.creator.value
+            }
+            $.ajax({
+                type: "POST",
+                url: "http://scarvite.de:180/createNanoId",
+                data: data,
+            });
+        }
+    </script>
+</head>
+
+<body>
+    <div class="important" style="color:red;">
+        <h2> Bitte Bicht wundern, das geht aufgrund technischer CSP und CORS Probleme Nicht. <br />
+            Einfach eine POST an http://scarvite.de:180/createNanoId senden, im body {"link": link, "creator":
+            yourUsername}
+        </h2>
+    </div>
+    <form name="newNanoId">
+        Dein Username: <input type="text" name="creator"> <br />
+        Dein Link, den du Kürzen Willst: <input type="link" name="link"> <br />
+        <input type="button" value="Registrieren" onClick="send()"> <br />
+        <input type="reset" value="Reset" /> <br />
+    </form>
+</body>
+
+</html>
