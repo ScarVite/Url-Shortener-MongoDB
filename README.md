@@ -2,6 +2,8 @@
 A Simple Url shortener.
 Currently Requires MongoDB to be installed and running on your Server
 
+A Better Guide will come soon, for now, you kinda have to figure out how it works. Sorry
+
 ## Installing
 
 1. `git clone https://github.com/ScarVite/Url-Shortener.git`
