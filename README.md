@@ -10,4 +10,4 @@ Currently Requires MongoDB to be installed and running on your Server
 5. `mongodb`
 6. `use ScarVite`
 7. `db.createCollection("shortener")`
-8. `npm start`
+8. Import The File using `const shortener = require('./Url-Shortener')`
