@@ -1,20 +1,24 @@
 {
   "name": "url-shortener",
-  "author": "ScarVite#6606",
   "version": "1.0.0",
-  "description": "The backend of an URL Shortener",
-  "main": "api.js",
+  "description": "A Url Shortener",
+  "main": "index.js",
   "scripts": {
-    "start": "nodemon api.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ScarVite/Url-Shortener.git"
+  },
+  "author": "ScarVite",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/ScarVite/Url-Shortener/issues"
+  },
+  "homepage": "https://github.com/ScarVite/Url-Shortener#readme",
   "dependencies": {
-    "body-parser": "^1.19.0",
-    "express": "^4.17.1",
-    "helmet": "^4.0.0",
+    "axios": "^0.20.0",
     "mongodb": "^3.6.0",
-    "nanoid": "^3.1.12",
-    "nodemon": "^2.0.4"
+    "nanoid": "^3.1.12"
   }
 }

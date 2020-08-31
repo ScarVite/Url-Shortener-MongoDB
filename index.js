@@ -1,60 +1,11 @@
-const express = require('express');
-var helmet = require('helmet')
-const bodyParser = require('body-parser');
+const axios = require('axios')
 const { nanoid } = require('nanoid')
 
 const MongoClient = require('mongodb').MongoClient;
 
 let url = "mongodb://localhost:27017/";
-let db_name = "Aniflix";
-let db_collection = "nanoId";
-
-const app = express();
-
-
-var listener = app.listen(180, function () {
-    console.log(`Url Shortener (as a Api) listening on port ${listener.address().port}`)
-});
-
-app.use(helmet())
-app.use(bodyParser.json());
-
-app.get('/re/:nanoId', async (req, res) => {
-    var nanoId = await isExistentNanoID(req.params.nanoId);
-    if (!nanoId.err && nanoId.exists) {
-        if (nanoId.err) {
-            console.error(nanoId.err);
-            res.status(500);
-            res.send(nanoId.err.string)
-        } else {
-            res.redirect(nanoId.nanoId.link);
-        }
-    } else {
-        res.send(nanoId.err.string)
-        //res.sendfile('./html/index.html')
-    }
-})
-
-app.get('/', (req, res) => {
-    res.sendfile('./html/index.html')
-})
-
-app.get('/admin', (req, res) => {
-    res.sendfile('./html/admin.html')
-})
-
-app.post('/createNanoId', async (req, res) => {
-    var answ = await CreateNewNanoId(req.body);
-    res.send(`Your Link is Done, http://scarvite.de:180/re/${answ.id}. Send a POST to scarvite.de:180/checkStats with creator and the id, to check your Clicks`)
-})
-
-app.post('/checkStats', async (req, res) => {
-    var answ = await checkStats(req.body);
-    if(!answ.err){
-    res.send(`You have ${answ.nanoId.clicks} clicks on http://scarvite.de:180/re/${answ.id}.`)
-    }
-    res.send(answ.err)
-})
+let db_name = "ScarVite";
+let db_collection = "shortener";
 
 function isExistentNanoID(nanoId) {
     return new Promise(resolve => {
@@ -84,7 +35,7 @@ function isExistentNanoID(nanoId) {
                         exists: true,
                         nanoId: result[0].nanoId
                     });
-                    var newvalues = { $set: { nanoId: { clicks: (result[0].nanoId.clicks+1), creator: result[0].nanoId.creator, created_at: result[0].nanoId.created_at, link: result[0].nanoId.link } } }
+                    var newvalues = { $set: { nanoId: { clicks: (result[0].nanoId.clicks + 1), creator: result[0].nanoId.creator, created_at: result[0].nanoId.created_at, link: result[0].nanoId.link } } }
                     dbo.collection(db_collection).updateOne(result[0], newvalues, function (err, res) {
                         if (err) {
                             resolve({
@@ -237,14 +188,14 @@ function checkStats(params) {
                                 }
                             });
                         }
-                    } else if(result.length > 0) {
+                    } else if (result.length > 0) {
                         resolve({
                             err: {
                                 code: 2,
-                                string: "Found too Many Entrys. Message an Administrator"
+                                string: "Found too Many Entrys.Please Message an Administrator"
                             }
                         });
-                    } else{
+                    } else {
                         resolve({
                             err: {
                                 code: 1,
@@ -264,3 +215,7 @@ function checkStats(params) {
         }
     })
 }
+
+exports.isExistentNanoID = isExistentNanoID;
+exports.CreateNewNanoId = CreateNewNanoId;
+exports.checkStats = checkStats;
