@@ -1,18 +1,21 @@
 {
-  "name": "url-shortener",
-  "version": "1.0.0",
+  "name": "url-shortener-mongodb",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/@ScarVite"
+  },
+  "version": "1.0.2",
   "description": "A Url Shortener",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ScarVite/Url-Shortener.git"
+    "url": "git+https://github.com/ScarVite/Url-Shortener-MongoDB.git"
   },
   "author": "ScarVite",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/ScarVite/Url-Shortener/issues"
+    "url": "https://github.com/ScarVite/Url-Shortener-MongoDB/issues"
   },
-  "homepage": "https://github.com/ScarVite/Url-Shortener#readme",
+  "homepage": "https://github.com/ScarVite/Url-Shortener-MongoDB#readme",
   "dependencies": {
     "axios": "^0.20.0",
     "mongodb": "^3.6.0",
