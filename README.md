@@ -8,7 +8,7 @@ A Better Guide will come soon, for now, you kinda have to figure out how it work
 
 1. `npm install url-shortener-mongodb`
 2.  Install MongoDB (`sudo apt install mongodb`)
-3. `mongodb`
+3. `mongodb`/ `mongo`
 4. `use ScarVite`
 5. `db.createCollection("shortener")`
 6. Import The File using `const shortener = require('url-shortener-mongodb')`
@@ -35,12 +35,12 @@ app.get('/re/:nanoId', async (req, res) => {
 app.post('/nanoid/createNanoId', async (req, res) => {
     var answ = await shortener.CreateNewNanoId(req.body);
     if (answ.err) res.send(answ)
-    else res.send(`Your Link is Done, https://api.scarvite.de/re/${answ.id}. Send a POST to https://api.scarvite.de/checkStats with creator and the id, to check your Clicks`)
+    else res.send(`Your Link is Done, ${ApiLink}/${answ.id}. Send a POST to  ${ApiLink}/checkStats with creator and the using the Body, to check your Clicks`)
 })
 
 app.post('/nanoid/checkStats', async (req, res) => {
     var answ = await shortener.checkStats(req.body);
-    if (!answ.err) res.send(`You have ${answ.nanoId.clicks} clicks on https://api.scarvite.de/re/${answ.id}.`)
+    if (!answ.err) res.send(`You have ${answ.nanoId.clicks} clicks on  ${ApiLink}/${answ.id}.`)
     else res.send(answ.err)
 })
 ```
