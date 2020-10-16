@@ -3,7 +3,7 @@
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/@ScarVite"
   },
-  "version": "1.0.2",
+  "version": "1.0.4",
   "description": "A Url Shortener",
   "main": "index.js",
   "repository": {
