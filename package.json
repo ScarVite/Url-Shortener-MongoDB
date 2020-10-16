@@ -1,8 +1,5 @@
 {
   "name": "url-shortener-mongodb",
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/@ScarVite"
-  },
   "version": "1.0.4",
   "description": "A Url Shortener",
   "main": "index.js",
